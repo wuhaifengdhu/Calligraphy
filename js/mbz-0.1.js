@@ -15,6 +15,8 @@
         this.canvasName = canvasName;
     }
 
+
+
     //初始化
     MBZ.prototype.init = function () {
         var that = this;
@@ -42,6 +44,7 @@
         this.canvas.onmouseup = function(e){
             e.preventDefault();
             this.isMouseDown = false;
+            this.penWidth = 15;
         }
         this.canvas.onmouseout = function(e){
             e.preventDefault();
@@ -88,6 +91,7 @@
         $('#mb')[0].addEventListener(click, function () {
             that.penWidth = 15;
         });
+        
     }
 
     //画米字格
@@ -140,7 +144,13 @@
         this.cxt.stroke();
 
         this.drawGrid();
-
+        if(this.lastPoint.x == point.x && this.lastPoint.y == point.y){
+            if(this.penWidth < 25){
+                this.penWidth += 0.7;
+            }
+        } else if(this.penWidth > 15){
+            this.penWidth -= 0.2;
+        }
         this.lastPoint.x = point.x;
         this.lastPoint.y = point.y;
     }
