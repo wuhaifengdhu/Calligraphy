@@ -4,7 +4,7 @@
 +function($){
     'use strict';
     var MBZ = function (canvasName) {
-        this.canvasWidth = Math.min(400, window.innerWidth - 20);
+        this.canvasWidth = Math.min(480, window.innerWidth - 20);
         this.canvasHeight = this.canvasWidth;
 
         this.isMouseDown = false;
@@ -13,7 +13,7 @@
 
         this.penWidth = 15;
         this.canvasName = canvasName;
-    }
+    };
 
 
 
@@ -74,23 +74,18 @@
         //橡皮擦
         var click = 'ontouchstart' in window ? 'touchstart' : 'click';
 
-        $('#eraser')[0].addEventListener(click, function(){
-            that.isEraser = that.isEraser ? false : true;
-        });
+        // $('#eraser')[0].addEventListener(click, function(){
+        //     that.isEraser = that.isEraser ? false : true;
+        // });
 
         //清除画布
         $('#clear')[0].addEventListener(click, function () {
             that.clear();
         });
 
-        //笔型的选择
-        $('#gb')[0].addEventListener(click, function () {
-            that.penWidth = 1;
-        });
-
-        $('#mb')[0].addEventListener(click, function () {
-            that.penWidth = 15;
-        });
+        // $('#mb')[0].addEventListener(click, function () {
+        //     that.penWidth = 15;
+        // });
         
     }
 
